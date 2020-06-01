@@ -17,7 +17,7 @@ import env from '../../env';
   * @returns {Boolean} True or False
   */
  const validatePassword = (password)=>{
-     if (password.length <= 12 || password ===''){
+     if (password.length <= 6 || password ===''){
          return false;
      }return true;
  };
@@ -61,7 +61,6 @@ const generateUserToken = (email, id, is_admin, first_name, last_name)=>{
     return token;
 };
    export{
-       hashPassword,
        isValidEmail,
        validatePassword,
        isEmpty,
