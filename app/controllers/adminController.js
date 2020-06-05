@@ -73,5 +73,51 @@ return res.status(status.conflict).send(errorMessage);
     }
 }
 };
+/**
+ * Update A User to Admin
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} updated user
+ */
 
+ const updateUserToAdmin = async (req, res) =>{
+     const {id} = req.params;
+     const {isAdmin} = req.body;
 
+     const {is_admin} = req.user;
+     if(!is_admin === true){
+         errorMessage.error = 'Unauthorized to make a User an Admin';
+         return res.status(status.bad).send(errorMessage);
+     }
+     if(isAdmin === ''){
+         errorMessage.error = 'You need Admin status'
+         return res.status(status.bad).send(errorMessage);
+     }
+     const findUserQuery = 'SELECT * FROM users WHERE id=$1';
+     const updateUser = `UPDATE users SET is_admin=$1 WHERE id=$2 returning *`;
+     
+     try{
+         const{ rows } = await dbQuery.query(findUserQuery, [id]);
+         const dbResponse = rows[0];
+         if(!dbResponse){
+             errorMessage.error = 'User not Found';
+             return res.status(status.notfound).send(errorMessage);
+         }
+         const values = [
+             isAdmin,
+             id,
+         ];
+         const response = await dbQuery.query(updateUser, values);
+         const dbResult = response.rows[0];
+         delete dbResult.password;
+         successMessage.data = dbResult;
+         return res.status(status.success).send(successMessage);
+     } catch (error){
+         errorMessage.error = 'Operation unsuccessful';
+         return res.status(status.error).send(errorMessage);
+     }
+};
+export{
+    createAdmin,
+    updateUserToAdmin,
+};

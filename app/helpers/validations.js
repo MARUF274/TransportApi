@@ -1,4 +1,26 @@
+/* eslint-disable camelcase */
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import env from '../../env';
+
+/**
+   * Hash Password Method
+   * @param {string} password
+   * @returns {string} returns hashed password
+   */
+const saltRounds = 10;
+const salt = bcrypt.genSaltSync(saltRounds);
+const hashPassword = password => bcrypt.hashSync(password, salt);
+
+/**
+   * comparePassword
+   * @param {string} hashPassword
+   * @param {string} password
+   * @returns {Boolean} return True or False
+   */
+const comparePassword = (hashedPassword, password) => {
+  return bcrypt.compareSync(password, hashedPassword);
+};
 
 /**
  * isValidEmail helper method
@@ -61,6 +83,8 @@ const generateUserToken = (email, id, is_admin, first_name, last_name)=>{
     return token;
 };
    export{
+       hashPassword,
+       comparePassword,
        isValidEmail,
        validatePassword,
        isEmpty,
