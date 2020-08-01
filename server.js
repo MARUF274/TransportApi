@@ -25,3 +25,4 @@ app.use('/api/v1', bookingRoute);
 app.listen(env.port).on('listening', ()=>{
     console.log(`You are on ${env.port}`);
 });
+

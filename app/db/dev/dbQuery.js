@@ -1,5 +1,5 @@
 import pool from './pool'
-export default{
+export default {
     /**
      * DB Query
      * @param {object} req

@@ -86,7 +86,7 @@ const getAllBookings = async (req, res) => {
       errorMessage.error = 'An error Occured';
       return res.status(status.error).send(errorMessage);
     }
-  }
+  } 
   const getAllBookingsQuery = 'SELECT * FROM booking ORDER BY id DESC';
   try {
     const { rows } = await dbQuery.query(getAllBookingsQuery);

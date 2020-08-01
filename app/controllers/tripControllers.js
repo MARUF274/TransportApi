@@ -64,7 +64,13 @@ const createTrip = async (req, res) => {
    * @param {object} res
    * @returns {object} trips array
    */
-const getAllTrips = async (req, res) => {
+/**
+   * Get All Trips
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} trips array
+   */
+  const getAllTrips = async (req, res) => {
     const getAllTripsQuery = 'SELECT * FROM trip ORDER BY id DESC';
     try {
       const { rows } = await dbQuery.query(getAllTripsQuery);
@@ -80,6 +86,7 @@ const getAllTrips = async (req, res) => {
       return res.status(status.error).send(errorMessage);
     }
   };
+  
  /**
   * Cancel trip
   * @param {object} req
