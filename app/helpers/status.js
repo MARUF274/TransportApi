@@ -15,6 +15,7 @@ const trip_statuses = {
   active: 1.00,
   cancelled: 2.00,
 }
+
 export {
   successMessage,
   errorMessage,

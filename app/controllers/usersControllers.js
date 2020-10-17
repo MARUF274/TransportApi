@@ -104,8 +104,8 @@ const createUser = async (req, res) =>{
  };
 
  /**
- * @params {Object} req
- * @params {Object} res
+ * @param {Object} req
+ * @param {Object} res
  * @returns return firstname and Lastname
  */ 
 
