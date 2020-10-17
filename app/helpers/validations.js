@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-/* eslint-disable camelcase */
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import env from '../../env';
