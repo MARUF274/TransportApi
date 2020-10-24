@@ -17,8 +17,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use('/api/v1', usersRoute);
-app.use('/api/v1', familyRoute);
-app.use('/api/v1', seedRoute);
 app.use('/api/v1', adminRoute);
 app.use('/api/v1', tripRoute);
 app.use('/api/v1', busRoute);
@@ -26,7 +24,7 @@ app.use('/api/v1', bookingRoute);
 
 
 app.listen(env.port).on('listening', () => {
-  console.log(`🚀 are live on ${env.port}`);
+  console.log(`we are live on port: ${env.port}`);
 });
 
 

@@ -1,5 +1,0 @@
-Route.Post Error
-PostgreSQL susah kebuka
-Belum ketemu endpoint
-
- 

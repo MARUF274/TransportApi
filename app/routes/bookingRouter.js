@@ -2,7 +2,6 @@ import express from 'express';
 
 import {createBooking, getAllBookings, deleteBooking, updateBookingSeat} from '../controllers/bookingControllers';
 import verifyAuth from '../middlewares/verifyAuth';
-import router from './busRoutes';
 
 const router = express.Router();
 //booking Routes
